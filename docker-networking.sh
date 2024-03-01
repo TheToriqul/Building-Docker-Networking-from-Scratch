@@ -14,11 +14,11 @@ sudo ip addr add 192.168.0.1/24 dev br0
 sudo ip link set dev br0 up
 
 # Create Docker network
-docker network create --driver=bridge --subnet=192.168.0.0/24 --gateway=192.168.0.1 mynetwork
+docker network create --driver=bridge --subnet=192.168.0.0/24 --gateway=192.168.0.1 br0
 
 # Run Nginx containers with assigned IP addresses and connect them to the network
-docker run -d --name nginx_container1 --network=mynetwork --ip=192.168.0.10 nginx
-docker run -d --name nginx_container2 --network=mynetwork --ip=192.168.0.11 nginx
+docker run -d --name nginx_container1 --network=br0 --ip=192.168.0.10 nginx
+docker run -d --name nginx_container2 --network=br0 --ip=192.168.0.11 nginx
 
 # Verify connectivity
 docker exec nginx_container1 ping -c 3 192.168.0.11

@@ -22,15 +22,15 @@ This project demonstrates how to set up a basic Docker network using a bridge in
     * `sudo ip link set dev br0 up` activates the bridge interface, allowing devices to connect and communicate through it.
 
 5. **Create Docker network:**
-    * `docker network create --driver=bridge --subnet=192.168.0.0/24 --gateway=192.168.0.1 mynetwork` creates a Docker network named `mynetwork`. The options used are:
+    * `docker network create --driver=bridge --subnet=192.168.0.0/24 --gateway=192.168.0.1 br0` creates a Docker network named `br0`. The options used are:
         * `--driver=bridge`: Specifies the bridge driver, which utilizes the previously created bridge interface.
         * `--subnet=192.168.0.0/24`: Defines the subnet for the network, matching the one assigned to the bridge.
         * `--gateway=192.168.0.1`: Sets the network gateway, which is the IP address of the bridge interface.
 
 6. **Run Nginx containers:**
     * Two Docker containers are launched using `docker run`:
-        * `nginx_container1`: This container is named `nginx_container1` and is connected to the `mynetwork` network. The `--ip=192.168.0.10` option assigns a static IP address of `192.168.0.10` within the network. The image used is `nginx`, which runs the Nginx web server.
-        * `nginx_container2`: This container follows a similar pattern, named `nginx_container2`, connected to `mynetwork`, and assigned a static IP of `192.168.0.11`.
+        * `nginx_container1`: This container is named `nginx_container1` and is connected to the `br0` network. The `--ip=192.168.0.10` option assigns a static IP address of `192.168.0.10` within the network. The image used is `nginx`, which runs the Nginx web server.
+        * `nginx_container2`: This container follows a similar pattern, named `nginx_container2`, connected to `br0`, and assigned a static IP of `192.168.0.11`.
 
 7. **Verify connectivity:**
     * The script checks connectivity between the containers using `ping`:
