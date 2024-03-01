@@ -1,6 +1,6 @@
 # Building Docker Networking from Scratch
 
-This project demonstrates how to set up a basic Docker network using a bridge interface on a Debian-based system. This guide provides step-by-step instructions and explanations for new engineers.
+This project demonstrates how to set up a basic Docker network using a bridge interface on a Debian-based system. This guide provides step-by-step instructions and explanations.
 
 **Prerequisites:**
 
